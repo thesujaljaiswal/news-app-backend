@@ -37,7 +37,7 @@ const deleteNews = asynchandler(async (req, res) => {
 
 const fetchNews = asynchandler(async (req, res) => {
   const documents = await News.find({}).sort({ createdAt: -1 });
-
+  
   if (!documents) {
     throw new ApiError(400, "No document fetched");
   }

@@ -1,13 +1,13 @@
-import {app} from './app.js'
-import dotenv from 'dotenv'
-import connectDB from './db/db.js'
+import { app } from "./app.js";
+import dotenv from "dotenv";
+import connectDB from "./db/db.js";
 
-dotenv.config()
+dotenv.config();
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5000;
 
-connectDB()
+connectDB();
 
-app.listen(PORT, ()=>{
-    console.log(`App Listening on port http://localhost:${PORT}`)
-})
+app.listen(PORT, () => {
+  console.log(`App Listening on port http://localhost:${PORT}`);
+});
