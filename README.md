@@ -1,6 +1,4 @@
-Of course! Here's your original README content **exactly as you wrote**, but formatted properly using Markdown (headings, code blocks, lists, etc.) so you can copy and paste it into your `README.md` file:
 
----
 
 ````markdown
 # News App Backend
