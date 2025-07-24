@@ -42,6 +42,7 @@ const userSchema = new Schema(
   { timestamps: true }
 );
 
+// Encrypting the password before saving
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
 
@@ -49,10 +50,12 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
+// Checking if password is matching or not
 userSchema.methods.isPasswordCorrect = async function (password) {
   return await bcrypt.compare(password, this.password);
 };
 
+// Generating accessToken for user with predefined expiry
 userSchema.methods.generateAccessToken = function () {
   return jwt.sign(
     {
@@ -68,6 +71,7 @@ userSchema.methods.generateAccessToken = function () {
   );
 };
 
+// Generating refreshToken for user with predefined expiry
 userSchema.methods.generateRefreshToken = function () {
   return jwt.sign(
     {
@@ -80,6 +84,7 @@ userSchema.methods.generateRefreshToken = function () {
   );
 };
 
-userSchema.plugin(mongooseAggregatePaginate)
+// Initializing mongoose-Aggregate-paginate to write join queries in mongodb
+userSchema.plugin(mongooseAggregatePaginate);
 
 export const User = mongoose.model("user", userSchema);
